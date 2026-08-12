@@ -73,7 +73,7 @@ submit.addEventListener("click",()=>{
 
         document.getElementById("ratingCount").innerHTML=data.ratings;
 
-        msg.innerHTML="⭐ Thank You for Rating DS STEMIFY";
+        msg.innerHTML="⭐ Thank You for Rating DM STEMIFY";
 
         submit.style.display="none";
 
