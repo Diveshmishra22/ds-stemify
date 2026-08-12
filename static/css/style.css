@@ -1,3 +1,204 @@
+/* =========================================
+   DM STEMIFY — REFINED FLUID GLASS BACKGROUND
+   Background only — application/card CSS untouched.
+========================================= */
+html {
+    scroll-behavior: smooth;
+}
+body{
+    background:#07111f;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-18%;
+    z-index:-10;
+    pointer-events:none;
+    background:
+      radial-gradient(ellipse at 12% 18%,rgba(0,245,255,.28),transparent 30%),
+      radial-gradient(ellipse at 88% 20%,rgba(255,55,210,.22),transparent 31%),
+      radial-gradient(ellipse at 78% 82%,rgba(105,55,255,.25),transparent 34%),
+      radial-gradient(ellipse at 18% 84%,rgba(0,255,180,.16),transparent 30%),
+      linear-gradient(135deg,#07111f,#10182d 48%,#091225);
+    filter:blur(28px) saturate(135%);
+    animation:bgFlow 22s ease-in-out infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-9;
+    pointer-events:none;
+    background:
+      linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,#000,transparent 85%);
+}
+
+/* Home: two fluid glass forms + a refined 3D crystal bubble */
+#home{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse at 50% 48%,rgba(0,220,255,.10),transparent 48%),
+      linear-gradient(180deg,rgba(7,17,31,.18),rgba(4,9,20,.55));
+}
+
+
+#home::before,
+#home::after{
+    content:"";
+    position:absolute;
+    width:720px;
+    height:420px;
+    border:1px solid rgba(255,255,255,.20);
+    pointer-events:none;
+    z-index:-3;
+    backdrop-filter:blur(25px) saturate(170%);
+    -webkit-backdrop-filter:blur(25px) saturate(170%);
+    box-shadow:
+      inset 2px 3px 18px rgba(255,255,255,.15),
+      inset -30px -35px 70px rgba(0,0,0,.22),
+      0 30px 90px rgba(0,0,0,.28);
+}
+
+#home::before{
+    left:-250px;
+    top:5%;
+    border-radius:58% 42% 64% 36% / 42% 62% 38% 58%;
+    background:
+      radial-gradient(ellipse at 28% 20%,rgba(255,255,255,.24),transparent 24%),
+      linear-gradient(125deg,rgba(0,245,255,.27),rgba(20,110,255,.16) 48%,rgba(130,45,255,.18));
+    animation:glassLeft 15s ease-in-out infinite alternate;
+}
+
+#home::after{
+    right:-250px;
+    bottom:5%;
+    border-radius:42% 58% 38% 62% / 60% 40% 60% 40%;
+    background:
+      radial-gradient(ellipse at 72% 22%,rgba(255,255,255,.22),transparent 23%),
+      linear-gradient(125deg,rgba(255,45,210,.20),rgba(125,45,255,.18) 45%,rgba(0,225,255,.19));
+    animation:glassRight 17s ease-in-out infinite alternate;
+}
+
+#home .home-glass-orb{
+    position:absolute;
+    width:290px;
+    height:290px;
+    left:50%;
+    top:50%;
+    margin:-145px;
+    border-radius:34% 66% 58% 42% / 52% 38% 62% 48%;
+    background:
+      radial-gradient(circle at 27% 18%,rgba(255,255,255,.48),transparent 13%),
+      radial-gradient(circle at 70% 76%,rgba(255,30,205,.22),transparent 35%),
+      radial-gradient(circle at 35% 55%,rgba(0,255,235,.25),rgba(60,80,255,.12) 48%,transparent 72%),
+      rgba(150,210,255,.055);
+    border:1px solid rgba(255,255,255,.30);
+    box-shadow:
+      inset 12px 10px 35px rgba(255,255,255,.18),
+      inset -28px -32px 60px rgba(0,0,0,.27),
+      0 12px 55px rgba(0,225,255,.20),
+      0 35px 90px rgba(0,0,0,.38);
+    backdrop-filter:blur(22px) saturate(185%);
+    -webkit-backdrop-filter:blur(22px) saturate(185%);
+    animation:orbFloat 11s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-2;
+}
+
+#home .home-glass-orb::before{
+    content:"";
+    position:absolute;
+    width:58%;
+    height:15%;
+    left:10%;
+    top:10%;
+    border-radius:50%;
+    background:linear-gradient(90deg,rgba(255,255,255,.42),rgba(255,255,255,0));
+    filter:blur(4px);
+    transform:rotate(-24deg);
+}
+
+#home .home-glass-orb::after{
+    content:"";
+    position:absolute;
+    width:65px;
+    height:65px;
+    right:-22px;
+    bottom:25px;
+    border-radius:45% 55% 60% 40%;
+    background:linear-gradient(135deg,rgba(0,255,230,.18),rgba(255,30,210,.18));
+    border:1px solid rgba(255,255,255,.20);
+    box-shadow:inset 5px 5px 15px rgba(255,255,255,.12),0 0 30px rgba(255,40,220,.13);
+    backdrop-filter:blur(12px);
+}
+
+#home > *{
+    position:relative;
+    z-index:1;
+}
+
+@keyframes glassLeft{
+    0%{transform:translate(-20px,-15px) rotate(-16deg) scale(1)}
+    50%{transform:translate(105px,35px) rotate(-5deg) scale(1.08)}
+    100%{transform:translate(205px,115px) rotate(8deg) scale(.96)}
+}
+
+@keyframes glassRight{
+    0%{transform:translate(20px,15px) rotate(14deg) scale(1)}
+    50%{transform:translate(-115px,-35px) rotate(3deg) scale(1.07)}
+    100%{transform:translate(-215px,-105px) rotate(-9deg) scale(.95)}
+}
+
+@keyframes orbFloat{
+    0%{transform:translate(0,0) rotate(0) scale(.96)}
+    50%{transform:translate(28px,-22px) rotate(7deg) scale(1.06)}
+    100%{transform:translate(-22px,35px) rotate(-6deg) scale(1)}
+}
+
+@keyframes bgFlow{
+    from{transform:scale(1) translate(-1%,-1%)}
+    to{transform:scale(1.08) translate(2%,2%)}
+}
+
+#tools{
+    position:relative;
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse at 50% 0,rgba(0,220,255,.08),transparent 55%),
+      linear-gradient(rgba(0,220,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(150,50,255,.02) 1px,transparent 1px),
+      #07111f;
+    background-size:100% 100%,70px 70px,70px 70px;
+}
+
+.footer{
+    position:relative;
+    isolation:isolate;
+    background:
+      radial-gradient(ellipse at 50% 0,rgba(0,220,255,.09),transparent 60%),
+      linear-gradient(180deg,#091427,#050a14);
+}
+
+@media(max-width:700px){
+    #home::before{width:520px;height:330px;left:-260px}
+    #home::after{width:520px;height:330px;right:-260px}
+    #home .home-glass-orb{width:205px;height:205px;margin:-102.5px}
+}
+
+@media(prefers-reduced-motion:reduce){
+    body::before,#home::before,#home::after,#home .home-glass-orb{animation:none}
+}
+
 /* ==========================
    GOOGLE FONT
 ========================== */
@@ -22,9 +223,13 @@ BODY
 
 body{
 
-background:#07111f;
-
-color:white;
+background:#000000;
+background-image:
+    radial-gradient(circle at 15% 20%, rgba(0,229,255,.13) 0, transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(120,0,255,.12) 0, transparent 30%),
+    radial-gradient(circle at 70% 80%, rgba(0,100,255,.10) 0, transparent 30%),
+    radial-gradient(circle at 20% 90%, rgba(0,255,180,.06) 0, transparent 25%);
+background-attachment:fixed;color:white;
 
 overflow-x:hidden;
 
@@ -76,9 +281,9 @@ justify-content:space-between;
 
 align-items:center;
 
-background:rgba(0,0,0,.4);
+background:rgba(5,8,15,.58);
 
-backdrop-filter:blur(15px);
+backdrop-filter:blur(22px) saturate(160%);
 
 z-index:999;
 
@@ -128,6 +333,8 @@ HOME
 
 #home{
 
+position:relative;
+
 height:100vh;
 
 display:flex;
@@ -142,10 +349,143 @@ text-align:center;
 
 padding:40px;
 
-background:
+overflow:hidden;
 
-linear-gradient(135deg,#051937,#004d7a,#008793,#00bf72);
+isolation:isolate;
 
+background-color:#000000;
+background-image:
+    radial-gradient(circle at 50% 35%, rgba(0,229,255,.18), transparent 25%),
+    radial-gradient(circle at 15% 75%, rgba(0,119,255,.15), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(138,43,226,.14), transparent 30%),
+    linear-gradient(180deg,#000000 0%,#02040a 55%,#000000 100%);
+background-attachment:fixed;
+
+}
+
+/* =========================================
+   HOME-ONLY GLASS WALLPAPER
+   Animated ambient shapes inspired by
+   premium phone lock-screen wallpapers.
+========================================= */
+
+#home::before{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    left:-150px;
+    top:-110px;
+    border-radius:42% 58% 63% 37% / 38% 42% 58% 62%;
+    background:
+        linear-gradient(135deg,
+            rgba(0,229,255,.16),
+            rgba(0,119,255,.08) 45%,
+            rgba(138,43,226,.12));
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        inset 0 0 80px rgba(255,255,255,.035),
+        0 0 90px rgba(0,229,255,.08);
+    backdrop-filter:blur(16px) saturate(150%);
+    -webkit-backdrop-filter:blur(16px) saturate(150%);
+    filter:blur(.2px);
+    transform:rotate(-18deg);
+    animation:homeGlassFloat 13s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-1;
+}
+
+#home::after{
+    content:"";
+    position:absolute;
+    width:620px;
+    height:360px;
+    right:-190px;
+    bottom:-80px;
+    border-radius:58% 42% 35% 65% / 48% 55% 45% 52%;
+    background:
+        linear-gradient(120deg,
+            rgba(138,43,226,.14),
+            rgba(0,119,255,.10) 48%,
+            rgba(0,229,255,.12));
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:
+        inset 0 0 100px rgba(255,255,255,.035),
+        0 0 100px rgba(138,43,226,.09);
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    filter:blur(.4px);
+    transform:rotate(-10deg);
+    animation:homeGlassFloatReverse 16s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* Extra floating glass orb */
+#home .home-glass-orb{
+    position:absolute;
+    width:260px;
+    height:260px;
+    right:16%;
+    top:16%;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 30% 25%,
+            rgba(255,255,255,.14),
+            rgba(0,229,255,.08) 24%,
+            rgba(0,119,255,.035) 58%,
+            transparent 72%);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        inset -25px -25px 60px rgba(0,0,0,.18),
+        inset 20px 20px 45px rgba(255,255,255,.035),
+        0 0 70px rgba(0,229,255,.07);
+    backdrop-filter:blur(14px) saturate(150%);
+    -webkit-backdrop-filter:blur(14px) saturate(150%);
+    animation:homeGlassOrb 11s ease-in-out infinite alternate;
+    pointer-events:none;
+    z-index:-1;
+}
+
+@keyframes homeGlassFloat{
+    0%{
+        transform:translate3d(0,0,0) rotate(-18deg) scale(1);
+    }
+    50%{
+        transform:translate3d(90px,45px,0) rotate(-7deg) scale(1.06);
+    }
+    100%{
+        transform:translate3d(35px,115px,0) rotate(8deg) scale(.96);
+    }
+}
+
+@keyframes homeGlassFloatReverse{
+    0%{
+        transform:translate3d(0,0,0) rotate(-10deg) scale(1);
+    }
+    50%{
+        transform:translate3d(-80px,-35px,0) rotate(3deg) scale(1.08);
+    }
+    100%{
+        transform:translate3d(-35px,-100px,0) rotate(-5deg) scale(.94);
+    }
+}
+
+@keyframes homeGlassOrb{
+    0%{
+        transform:translate3d(0,0,0) scale(1);
+    }
+    50%{
+        transform:translate3d(-55px,55px,0) scale(1.08);
+    }
+    100%{
+        transform:translate3d(35px,105px,0) scale(.94);
+    }
+}
+
+#home > *{
+    position:relative;
+    z-index:1;
 }
 
 #home h1{
@@ -252,9 +592,13 @@ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
 gap:35px;
 
-background:#07111f;
-
-}
+background:#000000;
+background-image:
+    radial-gradient(circle at 15% 20%, rgba(0,229,255,.13) 0, transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(120,0,255,.12) 0, transparent 30%),
+    radial-gradient(circle at 70% 80%, rgba(0,100,255,.10) 0, transparent 30%),
+    radial-gradient(circle at 20% 90%, rgba(0,255,180,.06) 0, transparent 25%);
+background-attachment:fixed;}
 
 /* ==========================================
    TOOL CARD
@@ -1263,7 +1607,10 @@ SIGNATURE FOOTER
 .footer{
     margin-top:80px;
     padding:50px 20px;
-    background:linear-gradient(180deg,#0b1220,#05080f);
+    background-color:#000000;
+background-image:
+    radial-gradient(circle at 50% 0%, rgba(0,229,255,.09), transparent 38%),
+    linear-gradient(180deg,#020409,#000000);
     border-top:2px solid #00d9ff;
     box-shadow:0 -5px 20px rgba(0,217,255,.15);
 }
@@ -1546,4 +1893,90 @@ transform:translateY(0);
 
 }
 
+}
+
+/* HOME GLASS MOBILE */
+@media (max-width:700px){
+    #home::before{
+        width:360px;
+        height:360px;
+        left:-170px;
+        top:-60px;
+    }
+
+    #home::after{
+        width:430px;
+        height:280px;
+        right:-220px;
+        bottom:-70px;
+    }
+
+    #home .home-glass-orb{
+        width:180px;
+        height:180px;
+        right:5%;
+        top:12%;
+    }
+}
+
+/* ABOUT */
+.about-section{
+    min-height:55vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:80px 25px;
+}
+
+.about-content{
+    max-width:750px;
+}
+
+.about-label{
+    display:inline-block;
+    margin-bottom:18px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:4px;
+    color:#00e5ff;
+    opacity:.85;
+}
+
+.about-content h2{
+    margin-bottom:20px;
+    font-size:clamp(32px,5vw,58px);
+    font-weight:700;
+    line-height:1.1;
+    letter-spacing:-1.5px;
+}
+
+.about-content h2 span{
+    background:linear-gradient(90deg,#00e5ff,#8a5cff,#ff45d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.about-content p{
+    max-width:650px;
+    margin:auto;
+    font-size:17px;
+    line-height:1.8;
+    color:rgba(255,255,255,.68);
+    font-weight:300;
+}
+
+@media(max-width:600px){
+    .about-section{
+        min-height:50vh;
+        padding:60px 22px;
+    }
+
+    .about-content h2{
+        font-size:34px;
+    }
+
+    .about-content p{
+        font-size:15px;
+    }
 }
